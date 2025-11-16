@@ -23,11 +23,11 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { use, useEffect, useState } from "react";
 import { FileUp, Router } from "lucide-react";
 import { FileUpload } from "../file-upload";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useModal } from "@/hook/use-model-store";
 
 // === Schema validate ===
 const formSchema = z.object({
@@ -41,14 +41,10 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export const InitialModal = () => {
-  const [isMounted, setIsMounted] = useState(false);
+export const CreateServerModal = () => {
+  const { isOpen, onClose, type } = useModal();
   const router = useRouter();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
+  const isModalOpen = isOpen && type === "createServer";
   // === Khởi tạo form ===
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -74,12 +70,13 @@ export const InitialModal = () => {
     console.log("Tạo server:", values);
   };
 
-  if (!isMounted) {
-    return null;
-  }
+  const handelClose = () => {
+    form.reset();
+    onClose();
+  };
 
   return (
-    <Dialog open>
+    <Dialog open={isModalOpen} onOpenChange={handelClose}>
       <DialogContent
         style={{
           left: "50%",
