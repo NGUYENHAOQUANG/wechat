@@ -2,7 +2,6 @@
 
 import { CreateServerModal } from "../modals/create-server-modal";
 import { useEffect, useState } from "react";
-
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -15,9 +14,8 @@ export const ModalProvider = () => {
   }
 
   return (
-    <>
+    <div>
       <CreateServerModal />
-      ÁDFDSFSDF
-    </>
+    </div>
   );
 };

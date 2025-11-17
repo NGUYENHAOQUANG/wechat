@@ -43,9 +43,9 @@ export default function RootLayout({
             enableSystem={false}
             storageKey="discord-theme"
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
-          {/* <ModalProvider /> */}
         </body>
       </html>
     </ClerkProvider>
