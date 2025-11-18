@@ -89,6 +89,6 @@ model Channel{
   @@index([serverId])
 
 
-  created DateTime @default(now())
-  updated DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -134,7 +134,7 @@ export const CreateServerModal = () => {
                       disabled={isLoading}
                       placeholder="Nhập tên server..."
                       {...field}
-                      className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
+                      className="bg-zinc-300/50 border border-black/45 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                     />
                   </FormControl>
                   <FormMessage className="text-red-500 text-sm" />
